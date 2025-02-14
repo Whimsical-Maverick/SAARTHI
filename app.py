@@ -7,12 +7,14 @@ from keras._tf_keras.keras.models import load_model
 import requests
 from bs4 import BeautifulSoup
 import re
+from dotenv import load_dotenv
+import os
 try:
     emotion=np.load("emotion.npy")
 except:
     emotion=""
 app = Flask(__name__)
-app.secret_key="f9a8c1b7e2d3g4h5i6j7k8l9m0n1o2p3q4r5s6t7u8v9w0x1y2z3a4b5"
+app.secret_key=os.getenv("SECRET_KEY")
 model = load_model('model_file_30epochs.h5')
 faceDetect = cv2.CascadeClassifier('haarcascade_frontalface_default.xml')
 
