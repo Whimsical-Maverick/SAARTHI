@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Live Feed</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='detection.css') }}">
+</head>
+<body>
+    <h1>Live Feed Analysis</h1>
+    <h2>Name:{{name}}  Age:{{age}}  Gender:{{gender}}</h2>
+    <div id="camera-feed">
+        <img id="video-feed" alt="Video Feed" style="border: 2px solid #000; border-radius: 10px;">
+    </div>
+    <select id="language-select">
+        <option value="English">English</option>
+        <option value="Hindi">Hindi</option>
+    </select>
+    <div id="music-container"></div>
+    
+    <div id="buttons-container">
+        <button onclick="startLiveFeed()">Start Feed</button>
+        <button onclick="stopLiveFeed()">Stop Feed</button>
+        <button onclick= "GetMusic()">Get Music</button>
+        <form action="/Movie" method="POST">
+            <button type="submit" name="action" value="recommend">Recommend Movies</button>
+        </form>
+        
+    </div>
+
+    <script>
+        // JavaScript for live feed integration
+        const videoFeed = document.getElementById('video-feed');
+        function startLiveFeed() {
+           
+            fetch('/start_feed')
+            .then(() => {
+            videoFeed.src='/video_feed';
+            })
+            .catch(err=>console.error(err));
+             
+        }
+
+        function stopLiveFeed() {
+            
+            fetch('/stop_feed')
+            .then(() => {
+            videoFeed.src = '';
+            })
+            .catch(err=>console.error(err));
+        }
+
+        function GetMusic()
+        {
+            
+             const lang = document.getElementById('language-select').value; // Get selected language
+             fetch(`/get_music?lang=${lang}`)
+            .then(response => response.json())
+            .then(data => {
+            // Display the music list link
+            const musicContainer = document.getElementById('music-container');
+            musicContainer.innerHTML = `<a href="${data.music_list}" target="_blank">Listen to Music</a>`;
+            })
+            .catch(err => console.error(err));
+
+
+        }
+        
+        
+    </script>
+</body>
+</html>
