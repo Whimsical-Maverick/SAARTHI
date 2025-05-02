@@ -1,4 +1,6 @@
 # created by virtualenv automatically
 .env
 env/
+.cache
+emotion.npy
 
