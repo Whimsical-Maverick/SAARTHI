@@ -8,20 +8,18 @@
 </head>
 <body>
     <h1>Live Feed Analysis</h1>
-    <h2>Name:{{name}}  Age:{{age}}  Gender:{{gender}}</h2>
+    <h2>Welcome : {{name}}</h2>
+    <h3 id="status"></h3>
     <div id="camera-feed">
         <img id="video-feed" alt="Video Feed" style="border: 2px solid #000; border-radius: 10px;">
     </div>
-    <select id="language-select">
-        <option value="English">English</option>
-        <option value="Hindi">Hindi</option>
-    </select>
-    <div id="music-container"></div>
     
     <div id="buttons-container">
         <button onclick="startLiveFeed()">Start Feed</button>
         <button onclick="stopLiveFeed()">Stop Feed</button>
-        <button onclick= "GetMusic()">Get Music</button>
+        <form action="/get_music" method="GET">
+            <button type="submit" name="music" value="get">Get Music</button>
+        </form>
         <form action="/Movie" method="POST">
             <button type="submit" name="action" value="recommend">Recommend Movies</button>
         </form>
@@ -31,42 +29,45 @@
     <script>
         // JavaScript for live feed integration
         const videoFeed = document.getElementById('video-feed');
+        const statusText=document.getElementById('status');
         function startLiveFeed() {
-           
+            alert("FEED_STARTED...PLEASE KEEP LOOKING IN THE CAMERA")
             fetch('/start_feed')
+            .then(response => response.json())
+            // .then(data => {
+            //     alert(data.message)
+            // })
             .then(() => {
             videoFeed.src='/video_feed';
+            emotion_interval = setInterval(()=>{
+                fetch('/get_emotion')
+                .then(response => response.json())
+                .then(data => {
+                    statusText.innerText = "Emotion" +" :" + data.emotion;
+                })
+                .catch(err=>console.error(err));
+            },1000)
             })
-            .catch(err=>console.error(err));
-             
         }
 
         function stopLiveFeed() {
-            
+            alert("FEED_STOPPED")
             fetch('/stop_feed')
+            .then(response => response.json())
+            // .then(data => {
+            //     alert(data.message)
+            // })
             .then(() => {
             videoFeed.src = '';
+            statusText.innerText = "Emotion Saved Successfully"
+            if (emotion_interval) 
+            {
+                clearInterval(emotion_interval);
+                emotion_interval = null;
+            }
             })
-            .catch(err=>console.error(err));
-        }
-
-        function GetMusic()
-        {
-            
-             const lang = document.getElementById('language-select').value; // Get selected language
-             fetch(`/get_music?lang=${lang}`)
-            .then(response => response.json())
-            .then(data => {
-            // Display the music list link
-            const musicContainer = document.getElementById('music-container');
-            musicContainer.innerHTML = `<a href="${data.music_list}" target="_blank">Listen to Music</a>`;
-            })
-            .catch(err => console.error(err));
-
-
-        }
-        
-        
+            .catch(err=>console.error(err))
+        }   
     </script>
 </body>
 </html>

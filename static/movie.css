@@ -22,21 +22,13 @@ h2 {
     text-align: center;
 }
 
-div
+.grid-container
 {
-    display:flex;
-    flex-wrap:wrap;
-}
-
-span
-{
-    text-align: center;
-    background: #fff;
-    border-radius: 8px;
-    margin:9px 6px;
-    display:inline;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-    font-size: 1rem;
+    font-weight: 800;
+    font-style:italic;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 10px;
 }
 
 li:hover {
@@ -45,19 +37,25 @@ li:hover {
     transition: all 0.2s ease-in-out;
 }
 
-a.back-link {
-    text-decoration: none;
-    color: #fff;
-    background: #007BFF;
-    padding: 10px 20px;
-    border-radius: 20px;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-    font-size: 1rem;
+button {
     margin-top: 20px;
+    padding: 10px 20px;
+    font-size: 16px;
+    background: #05b4ff;
+    background-clip:border-box;
+    color: white;
+    border: none;
+    border-radius: 15px;
+    cursor: pointer;
 }
 
-a.back-link:hover {
-    background: #0056b3;
-    transition: background 0.3s ease;
+button:hover {
+    background: #589ab6;
+}
+
+#buttons-container
+{
+   display:flex;
+   gap: 10px;
 }
 

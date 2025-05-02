@@ -9,11 +9,13 @@
 <body>
 	<h1>Movie Recommendations</h1>
     <h2>Hey There, we recommend the following movies to you:</h2>
-    <div>
+    <div id="grid-container">
+    <ol>
         {% for movie in movies %}
-          <span>{{ movie }}</span>
+          <li>{{ movie }}</li>
         {% endfor %}
+    </ol>
     </div>
-    <a href="/live-feed">Back to Live Feed</a>
+    <a href="/live-feed"><button class="buttons-container">Back to Main Page</button></a>
 </body>
 </html>

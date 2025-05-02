@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>Mental Health Support System</title>
+    <link rel = "stylesheet" href="{{url_for('static',file_name='chat.css')}}">
+</head>
+
+<body>
+    <div class="container">
+        <h1>Emergency Care with AI</h1>
+        <textarea id="inputText" placeholder="Enter your Issue"></textarea>
+        <br><br>
+        <button id="submitBtn">Submit</button>
+        <div class="response" id="response"> </div>
+        <div class="conversation-history" id="conversationHistory">
+            <h3>Conversation History:</h3>
+            <div id="historyContent"></div>
+        </div>
+    </div>
+</body>
+
+</html>

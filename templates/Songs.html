@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Recommended Song</title>
+    <link rel="stylesheet" href="{{ url_for('static',filename='songs.css') }}">
+</head>
+<body>
+    <!-- Spotify Embed Player (Auto-plays the song) -->
+     <h1>{{ statement }}</h1>
+    <iframe id="spotify-player" src="{{ spotify_url }}" width="300" height="380" frameborder="0" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"></iframe>
+    <div id="buttons">
+    <form action="/get_music">
+        <button class="buttons-container" type="submit">Press to change</button>
+    </form>
+    <a href="https://open.spotify.com/track/{{ spotify_id}}" target="_blank">
+        <button class="buttons-container">Play Full Song on Spotify</button>
+    </a>
+    <a href="/live-feed"><button class="buttons-container">Back to Main Page</button></a>
+    </div>
+</body>
+</html>

@@ -10,8 +10,14 @@ body {
     height: 100vh;
 }
 
-h1 {
+h1
+{
     color:#05b4ff; 
+}
+
+h3
+{
+    color:rgb(9, 211, 9);
 }
 
 #camera-feed {
