@@ -1,0 +1,287 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>SAARTHI - PTSD Support System</title>
+  <link rel="stylesheet" href= "{{url_for('static', filename='main.css')}}">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&display=swap">
+  <meta name="description" content="SAARTHI - A supportive space for PTSD healing">
+</head>
+<body>
+  <div class="overlay"></div>
+  
+  <header>
+    <div class="container">
+      <div class="logo">
+        <h1>SAARTHI</h1>
+      </div>
+      <nav>
+        <div class="menu-toggle">
+          <span></span>
+          <span></span>
+          <span></span>
+        </div>
+        <ul class="nav-menu">
+          <li><a href="#home" class="active">Home</a></li>
+          <li><a href="#features">Features</a></li>
+          <li><a href="#facts">Know About PTSD</a></li>
+          <li><a href="/welcome">Mood Check</a></li>
+          <li><a href="/get_music">Musical Therapy</a></li>
+          <li><a href="">Movie Mania</a></li>
+          <li><a href="">Want To Talk About It</a></li>
+          <li><a href="#resources">Medical Care</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <section id="home" class="hero">
+      <div class="container">
+        <div class="hero-content">
+          <h2>Not Feeling Like Yourself? You're at the right place.</h2>
+          <p>Sometimes, it’s hard to explain what’s going on inside. SAARTHI is here to help you make sense of it — gently, without judgment.</p>
+          <div class="hero-buttons">
+            <!-- <a href="#features" class="btn primary-btn">Explore Features</a>
+            <a href="#mood-check" class="btn secondary-btn">Check Your Mood</a> -->
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="features" class="features">
+      <div class="container">
+        <h2 class="section-title">How We Help</h2>
+        <div class="features-grid">
+          <div class="feature-card">
+            <div class="feature-icon mood-icon"></div>
+            <h3>Mood Tracking</h3>
+            <p>Monitor your emotional states and identify triggers with our gentle mood tracking tools.</p>
+            <a href="/welcome" class="feature-link">Track Now</a>
+          </div>
+          <div class="feature-card">
+            <div class="feature-icon music-icon"></div>
+            <h3>Music Therapy</h3>
+            <p>Soothing sounds and melodies curated to help with anxiety reduction and relaxation.</p>
+            <a href="/get_music" class="feature-link">Listen</a>
+          </div>
+          <div class="feature-card">
+            <div class="feature-icon video-icon"></div>
+            <h3>Killing Stress</h3>
+            <p>Kill it with your all time Favourites</p>
+            <a href="" class="feature-link">Watch</a>
+          </div>
+          <div class="feature-card">
+            <div class="feature-icon resources-icon"></div>
+            <h3>Crisis Resources</h3>
+            <p>Immediate support resources and professional help connections when you need them most.</p>
+            <a href="" class="feature-link">Access Help</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="facts" class="facts">
+      <div class="container">
+        <h2 class="section-title">Know About PTSD</h2>
+        <div class="fact-container">
+          <p class="intro">Post-Traumatic Stress Disorder is a mental health condition that can develop after experiencing or witnessing a traumatic event. It’s more common than you think — and treatable.</p>
+          <div class="fact-grid">
+            <div class="fact-item" data-number="1">
+              <div class="fact-emoji">🧠</div>
+              <p>Not Feeling Like Yourself?</p>
+              <p><h6>Click to Know More</h6></p>
+            </div>
+            <div class="fact-item" data-number="2">
+              <div class="fact-emoji">🎭</div>
+              <p>Naming the Emotion Helps</p>
+              <p><h6>Click to Know More</h6></p>
+            </div>
+            <div class="fact-item" data-number="3">
+              <div class="fact-emoji">🤝</div>
+              <p>You Deserve Support</p>
+              <p><h6>Click to Know More</h6></p>
+            </div>
+            <div class="fact-item" data-number="4">
+              <div class="fact-emoji">🧘</div>
+              <p>Your Body Remembers Too</p>
+              <p><h6>Click to Know More</h6></p>
+            </div>
+            <div class="fact-item" data-number="5">
+              <div class="fact-emoji">🔇</div>
+              <p> It’s Okay Not to Have Words</p>
+              <p><h6>Click to Know More</h6></p>
+            </div>
+            <div class="fact-item" data-number="6">
+              <div class="fact-emoji">🌱</div>
+              <p>You're Already Doing Something Brave</p>
+              <p><h6>Click to Know More</h6></p>
+            </div>
+          </div>
+          <div class="fact-response">
+            
+          </div>
+        </div>
+        
+      </div>
+    </section>
+
+    <!-- <section id="music" class="music-therapy">
+      <div class="container">
+        <h2 class="section-title">Music Therapy</h2>
+        <p class="section-intro">Music can help regulate your nervous system and provide comfort during difficult moments.</p>
+        
+        <div class="music-player">
+          <div class="now-playing">
+            <h3>Calming Nature Sounds</h3>
+          </div>
+          <div class="player-controls">
+            <button id="prev-track" class="control-btn">◀◀</button>
+            <button id="play-pause" class="control-btn play-btn">▶</button>
+            <button id="next-track" class="control-btn">▶▶</button>
+          </div>
+          <div class="playlist">
+            <div class="playlist-item active" data-track="nature">
+              <p>Calming Nature Sounds</p>
+              <span>5:32</span>
+            </div>
+            <div class="playlist-item" data-track="meditation">
+              <p>Guided Meditation</p>
+              <span>10:15</span>
+            </div>
+            <div class="playlist-item" data-track="sleep">
+              <p>Deep Sleep Music</p>
+              <span>8:45</span>
+            </div>
+            <div class="playlist-item" data-track="anxiety">
+              <p>Anxiety Relief</p>
+              <span>12:30</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section> -->
+
+    <!-- <section id="videos" class="meditation-videos">
+      <div class="container">
+        <h2 class="section-title">Meditation & Grounding Videos</h2>
+        <p class="section-intro">Visual guides to help you practice mindfulness and presence.</p>
+        
+        <div class="videos-grid">
+          <div class="video-card">
+            <div class="video-thumbnail">
+              <div class="play-button"></div>
+              <img src="https://placehold.co/600x400/e4f1fe/1a365d?text=5+Minute+Grounding" alt="5-Minute Grounding Exercise">
+            </div>
+            <h3>5-Minute Grounding Exercise</h3>
+            <p>A quick technique to reconnect with the present moment when feeling overwhelmed.</p>
+          </div>
+          <div class="video-card">
+            <div class="video-thumbnail">
+              <div class="play-button"></div>
+              <img src="https://placehold.co/600x400/e4f1fe/1a365d?text=Breathing+Techniques" alt="Deep Breathing Techniques">
+            </div>
+            <h3>Deep Breathing Techniques</h3>
+            <p>Learn breathing patterns that can help reduce anxiety and promote relaxation.</p>
+          </div>
+          <div class="video-card">
+            <div class="video-thumbnail">
+              <div class="play-button"></div>
+              <img src="https://placehold.co/600x400/e4f1fe/1a365d?text=Body+Scan+Meditation" alt="Body Scan Meditation">
+            </div>
+            <h3>Body Scan Meditation</h3>
+            <p>A guided practice to release tension and connect with physical sensations safely.</p>
+          </div>
+          <div class="video-card">
+            <div class="video-thumbnail">
+              <div class="play-button"></div>
+              <img src="https://placehold.co/600x400/e4f1fe/1a365d?text=Sleep+Aid+Visualization" alt="Sleep Aid Visualization">
+            </div>
+            <h3>Sleep Aid Visualization</h3>
+            <p>Gentle guidance to help ease into restful sleep when nightmares or insomnia occur.</p>
+          </div>
+        </div>
+      </div>
+    </section> -->
+
+    <section id="resources" class="resources">
+      <div class="container">
+        <h2 class="section-title">Support Resources</h2>
+        <div class="resources-container">
+          <div class="resource-card emergency">
+            <h3>Crisis Support</h3>
+            <p><strong>National Crisis Hotline:</strong> 988</p>
+            <p><strong>Veterans Crisis Line:</strong> 1-800-273-8255 (Press 1)</p>
+            <p><strong>Crisis Text Line:</strong> Text HOME to 741741</p>
+            <!-- <a href="#" class="btn emergency-btn">Get Immediate Help</a> -->
+          </div>
+          <!-- <div class="resources-grid">
+            <div class="resource-item">
+              <h4>Find a Therapist</h4>
+              <p>Connect with trauma-informed therapists specializing in PTSD treatment.</p>
+              <a href="#" class="resource-link">Search Database</a>
+            </div>
+            <div class="resource-item">
+              <h4>Support Groups</h4>
+              <p>Join virtual or in-person peer support groups for connection and understanding.</p>
+              <a href="#" class="resource-link">Find Groups</a>
+            </div>
+            <div class="resource-item">
+              <h4>Self-Help Guides</h4>
+              <p>Evidence-based resources for managing symptoms between therapy sessions.</p>
+              <a href="#" class="resource-link">Browse Guides</a>
+            </div>
+            <div class="resource-item">
+              <h4>For Loved Ones</h4>
+              <p>Information to help friends and family support someone with PTSD.</p>
+              <a href="#" class="resource-link">Learn More</a>
+            </div>
+          </div> -->
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="container">
+      <div class="footer-content">
+        <div class="footer-logo">
+          <h2>SAARTHI</h2>
+          <p>Your Guiding Buddy</p>
+        </div>
+        <div class="footer-links">
+          <div class="footer-nav">
+            <h4>Navigation</h4>
+            <ul>
+              <li><a href="#home">Home</a></li>
+              <li><a href="#features">Features</a></li>
+              <li><a href="#mood-check">Mood Check</a></li>
+              <li><a href="#music">Music Therapy</a></li>
+              <li><a href="#videos">Meditation Videos</a></li>
+              <li><a href="#resources">Resources</a></li>
+            </ul>
+          </div>
+          <div class="footer-legal">
+            <h4>Information</h4>
+            <ul>
+              <li><a href="#">Privacy Policy</a></li>
+              <li><a href="#">Terms of Service</a></li>
+              <li><a href="#">Contact Us</a></li>
+              <li><a href="#">About</a></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <div class="disclaimer">
+        <p>We are not a replacement for professional care. If you're experiencing a medical emergency, please call 911 or visit your nearest emergency room.</p>
+        <p>© 2025 SAARTHI. All rights reserved.</p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- IMPORTANT: DO NOT REMOVE THIS SCRIPT TAG OR THIS VERY COMMENT! -->
+  <!-- <script src="https://cdn.gpteng.co/gptengineer.js" type="module"></script> -->
+  <script src="{{url_for('static',filename='main.js')}}"></script>
+</body>
+</html>

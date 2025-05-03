@@ -39,15 +39,11 @@ def get_emotion():
 
 @app.route('/')
 def homepage():
-    return render_template("login.html")
+    return render_template("main.html")
 
-@app.route('/welcome',methods=['GET','POST'])
+@app.route('/welcome')
 def detect():
-    username = request.form['Name']
-    clicked = request.form['getin']
-    if(clicked == "High_Five!"):
-        return render_template("detection.html",name = username)
-    return '',200
+    return render_template("detection.html")
 
 @app.route('/start_feed')
 def feedstart():
@@ -134,7 +130,7 @@ def music():
     #getting the url 
     song_id = get_spotify_track_id(selected_song['song_name'],selected_song['singer'])
     if not song_id:
-        return render_template("Songs.html", statement="Couldn't fetch a song, Mind Trying again", song_name="", spotify_url="", spotify_id="")
+        return render_template("Songs.html", statement="Couldn't fetch a song, Mind Refreshing again", song_name="", spotify_url="", spotify_id="")
     else:
         spotify_embed_url = f"https://open.spotify.com/embed/track/{song_id}"
         return render_template("Songs.html",statement=genre,song_name=selected_song['song_name'], spotify_url=spotify_embed_url, spotify_id=song_id)

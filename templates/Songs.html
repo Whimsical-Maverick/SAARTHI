@@ -8,7 +8,7 @@
 </head>
 <body>
     <!-- Spotify Embed Player (Auto-plays the song) -->
-     <h1>{{ statement }}</h1>
+     <!-- <h1>{{ statement }}</h1>
     <iframe id="spotify-player" src="{{ spotify_url }}" width="300" height="380" frameborder="0" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"></iframe>
     <div id="buttons">
     <form action="/get_music">
@@ -18,6 +18,23 @@
         <button class="buttons-container">Play Full Song on Spotify</button>
     </a>
     <a href="/live-feed"><button class="buttons-container">Back to Main Page</button></a>
+    </div> -->
+
+    <div class="container">
+        <h2 class="section-title">Music Therapy</h2>
+        <p class="section-intro">Music can help regulate your nervous system and provide comfort during difficult moments.</p>
+        
+        <div class="music-player">
+        <div class="now-playing">
+            <h3>{{ statement }}</h3>
+            <iframe id="spotify-player" src="{{ spotify_url }}" width="400" height="300" frameborder="0" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"></iframe>
+        </div>
+        <div class="player-controls">
+            <a href='/get_music'><button id="prev-track" class="control-btn">Change Song</button></a>
+            <a href='/'><button id="next-track" class="control-btn">Back to Main</button></a>
+            <a href='/get_music'><button id="prev-track" class="control-btn">Refresh</button></a>
+        </div>
+        </div>
     </div>
 </body>
 </html>
