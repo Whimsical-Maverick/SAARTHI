@@ -8,6 +8,9 @@ import spotipy
 from spotipy.oauth2 import SpotifyClientCredentials
 import random
 import os
+import requests
+import google.generativeai as genai
+from google.generativeai.types import GenerateContentResponse,GenerationConfig
 app = Flask(__name__)
 
 #Detection Systems Start Here
@@ -137,11 +140,61 @@ def music():
 #Music Systems End
 
 # Movie Systems start here
-    
+@app.route('/movies',methods=['POST'])
+def movies():
+   label_dict = {
+   "Anger":[35,10751,14],
+   "Contempt":[],
+   "Disgust":[] ,
+   "Fear":[],
+   "Happy":[],
+   "Neutral":[],
+   "Sad":[],
+   "Surprise":[],
+   }
+   data = request.get_json()
+   mood = data.get('emotional','neutral')
+   TMDB_API_KEY = os.getenv('TMDB_API_KEY')
+   url = f"https://api.themoviedb.org/3/search/movie?api_key={TMDB_API_KEY}&query={mood}"
+   response = requests.get(url)
+   movies = response.json().get("results", [])
+   movie_cards = [
+        {
+            "title": m.get("title"),
+            "overview": m.get("overview"),
+            "poster": f"https://image.tmdb.org/t/p/w500{m.get('poster_path')}" if m.get("poster_path") else None,
+            "rating": m.get("vote_average"),
+            "release_date": m.get("release_date")
+        }
+        for m in movies if m.get("poster_path")
+    ]
+   return jsonify(movie_cards)
 # Movie System  end here
 
 # Chat Bot
-    
+@app.route('/talk',methods=['GET','POST'])
+def talk():
+    return render_template('chat.html')
+
+@app.route('/BuddyBot',methods=['GET','POST'])
+def chat():
+    Gemini_api_key = os.getenv('GEMINI_API_KEY')
+    userInput = request.get_json()
+    # print(userInput)
+    if not userInput or 'Input' not in userInput:
+      return jsonify({"error": "Invalid input"}), 400
+    prompt = userInput['Input']
+    genai.configure(api_key=Gemini_api_key)
+    model = genai.GenerativeModel(
+        model_name="gemini-1.5-flash",
+        generation_config= genai.types.GenerationConfig(
+            temperature=0.5,
+            max_output_tokens=500
+        ),
+        system_instruction="You are an Empathetic PTSD support chatbot. Respond with empathy and support to the user's message. Give relevant advice without specifically mentioning them as Patients, uplift and motivate them... BUT STRICTLY NO MEDICAL ADVICE."
+    )
+    response = model.generate_content(prompt)
+    return jsonify({"message":response.text})
 # Chat Bot ends
 if __name__=="__main__":
     app.run(debug=True,use_reloader=False)

@@ -18,17 +18,17 @@ function startLiveFeed() {
 }
 
 function stopLiveFeed() {
-    alert("FEED_STOPPED")
     fetch('/stop_feed')
     .then(response => response.json())
     .then(() => {
         videoFeed.src = '';
         statusText.innerText = "Emotion Saved Successfully"
-        if (emotion_interval) 
+        if (emotion_interval)
         {
             clearInterval(emotion_interval);
             emotion_interval = null;
         }
     })
         .catch(err=>console.error(err))
+        alert("FEED_STOPPED")
 }

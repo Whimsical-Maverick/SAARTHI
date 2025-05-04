@@ -44,7 +44,7 @@ h3
     border-radius: 10px;
     width: 640px;
     height: 480px;
-    background: black;
+    background: var(--primary-color);
 } 
 
 button {
