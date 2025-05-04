@@ -3,4 +3,5 @@
 env/
 .cache
 emotion.npy
-
+__pycache__/
+*.pyc

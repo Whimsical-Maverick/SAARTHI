@@ -191,7 +191,7 @@ def chat():
             temperature=0.5,
             max_output_tokens=500
         ),
-        system_instruction="You are an Empathetic PTSD support chatbot. Respond with empathy and support to the user's message. Give relevant advice without specifically mentioning them as Patients, uplift and motivate them... BUT STRICTLY NO MEDICAL ADVICE."
+        system_instruction="You are an Empathetic PTSD support chatbot. Respond with empathy and support to the user's message and try to solve their problem. Give relevant advice by giving stronger motivations and restrictions as per the severity without specifically mentioning them as Patients, uplift and motivate them... BUT STRICTLY NO MEDICAL ADVICE."
     )
     response = model.generate_content(prompt)
     return jsonify({"message":response.text})
