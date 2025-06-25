@@ -1,4 +1,4 @@
-# 🎯 Saarthi Clone — Emotion-Based Interactive Companion
+# 🎯 SAARTHI — Emotion-Based Interactive Companion
 
 Saarthi Clone is an intelligent, modular Flask web application that detects your emotional state in real-time and offers personalized support through:
 
@@ -49,21 +49,25 @@ SaarthiClone/
 
 1. **Clone the Repository**
 
-   `<code>git clone https://github.com/your-username/SaarthiClone.git cd SaarthiClone </code>`
+   `git clone https://github.com/your-username/SaarthiClone.git cd SaarthiClone`
 2. **Set up a Virtual Environment**
 
-   `<code>python -m venv env source env/bin/activate   # For Linux/Mac .\env\Scripts\activate    # For Windows</code>`
-3. **Install Dependencies**
+   `python -m venv env `
+3. `source env/bin/activate   # For Linux/Mac `
+4. `.\env\Scripts\activate    # For Windows</code>`
+5. **Install Dependencies**
 
-   `<code>pip install -r requirements.txt</code>`
-4. **Set Environment Variables**
+   `pip install -r requirements.txt`
+6. **Set Environment Variables**
 
    Create a `.env` file in the root directory:
 
-   `<code>SPOTIFY_CLIENT_ID=your_spotify_client_id SPOTIFY_CLIENT_SECRET=your_spotify_client_secret GEMINI_API_KEY=your_google_gemini_api_key TMDB_API_KEY=your_tmdb_api_key</code>`
-5. **Run the Application**
+   `SPOTIFY_CLIENT_ID=your_spotify_client_id `
+7. `SPOTIFY_CLIENT_SECRET=your_spotify_client_secret`
+8. ` GEMINI_API_KEY=your_google_gemini_api_key TMDB_API_KEY=your_tmdb_api_key`
+9. **Run the Application**
 
-   `<code>python run.py</code>`
+   `python run.py`
 
 
 ## 🛠️ Tech Stack
