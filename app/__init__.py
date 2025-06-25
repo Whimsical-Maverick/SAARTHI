@@ -6,7 +6,6 @@ def create_app():
     app.config.from_pyfile("config.py",silent=True)#replaces the old config files with new one if present
     from app.routes.main import main_bp as main_blueprint
     from app.routes.BuddyBot import BuddyBot_bp as BuddyBot_blueprint
-    from app.routes.chat import chat_bp as chat_blueprint
     from app.routes.get_emotion import get_emotion_bp as get_emotion_blueprint
     from app.routes.get_movie import get_movie_bp as get_movie_blueprint
     from app.routes.get_music  import get_music_bp as get_music_blueprint
@@ -18,7 +17,6 @@ def create_app():
     from app.routes.welcome import welcome_bp as welcome_blueprint
     app.register_blueprint(main_blueprint)
     app.register_blueprint(BuddyBot_blueprint)
-    app.register_blueprint(chat_blueprint)
     app.register_blueprint(get_emotion_blueprint)
     app.register_blueprint(get_movie_blueprint)
     app.register_blueprint(get_music_blueprint)
