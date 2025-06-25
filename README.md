@@ -54,19 +54,20 @@ SaarthiClone/
 2. **Set up a Virtual Environment**
 
    `python -m venv env `
-3. `source env/bin/activate   # For Linux/Mac `
-4. `.\env\Scripts\activate    # For Windows</code>`
-5. **Install Dependencies**
+   `source env/bin/activate   # For Linux/Mac `
+   `.\env\Scripts\activate    # For Windows</code>`
+3. **Install Dependencies**
 
    `pip install -r requirements.txt`
-6. **Set Environment Variables**
+4. **Set Environment Variables**
 
    Create a `.env` file in the root directory:
 
    `SPOTIFY_CLIENT_ID=your_spotify_client_id `
-7. `SPOTIFY_CLIENT_SECRET=your_spotify_client_secret`
-8. ` GEMINI_API_KEY=your_google_gemini_api_key TMDB_API_KEY=your_tmdb_api_key`
-9. **Run the Application**
+   `SPOTIFY_CLIENT_SECRET=your_spotify_client_secret`
+   ` GEMINI_API_KEY=your_google_gemini_api_key`
+   `TMDB_API_KEY=your_tmdb_api_key`
+6. **Run the Application**
 
    `python run.py`
 
