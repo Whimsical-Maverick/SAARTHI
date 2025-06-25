@@ -15,14 +15,14 @@ SaarthiClone/
 │
 ├── app/
 │   ├── __init__.py            # Application Factory
-|   ├── Music_recomendaton     # Algo for music clustering
+|   ├── Music_recomendaton/    # Algo for music clustering
 |   ├── Model/                 # best.pt
 │   ├── routes/                # Blueprint-based route files
 │   ├── services/              # Core logic for detection, Spotify, chatbot, movies
 │   ├── templates/             # HTML templates
 |   ├── utils/                 # helper functions(if any) 
 │   └── static/                # CSS, JavaScript, pre-clustered datasets
-│
+|── config.py                  # Default configs
 ├── run.py                     # Flask app entry point
 ├── requirements.txt           # Python dependencies
 └── README.md
@@ -74,7 +74,7 @@ SaarthiClone/
 
 * **Backend:** Flask (Python)
 * **Frontend:** HTML, CSS, JavaScript
-* **Emotion Detection:** YOLOv8, OpenCV
+* **Emotion Detection:** YOLOv11, OpenCV
 * **Music Integration:** Spotify Web API
 * **Movie Recommendation:** TMDB API, Sentence Transformers
 * **Chatbot:** Google Gemini (Generative AI)
