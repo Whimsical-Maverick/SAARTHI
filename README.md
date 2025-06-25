@@ -15,16 +15,18 @@ SaarthiClone/
 │
 ├── app/
 │   ├── __init__.py            # Application Factory
+|   ├── Music_recomendaton     # Algo for music clustering
+|   ├── Model/                 # best.pt
 │   ├── routes/                # Blueprint-based route files
 │   ├── services/              # Core logic for detection, Spotify, chatbot, movies
 │   ├── templates/             # HTML templates
+|   ├── utils/                 # helper functions(if any) 
 │   └── static/                # CSS, JavaScript, pre-clustered datasets
 │
 ├── run.py                     # Flask app entry point
 ├── requirements.txt           # Python dependencies
 └── README.md
 ```
-
 
 ## 🔥 Features
 
@@ -43,7 +45,6 @@ SaarthiClone/
 * ⚙️ **Scalable Modular Flask Architecture**
 
   Built using Flask’s Application Factory pattern and Blueprint-based modular structure for clean, maintainable, and scalable design.
-
 
 ## 🚀 Installation
 
@@ -68,7 +69,6 @@ SaarthiClone/
 9. **Run the Application**
 
    `python run.py`
-
 
 ## 🛠️ Tech Stack
 
