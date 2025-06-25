@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Movie Recommender</title>
+    <link rel="stylesheet" href="{{ url_for('static',filename='movie.css') }}">
+</head>
+<body>
+	<main>
+        <section id="header-img">
+        <div id="img-container">
+            <img src="{{url_for('static',filename='assets/SentiSync.png')}}">
+        </div>
+        </section>
+        <section id="search">
+        <div id="searchbar">
+            <form id = "emotion-feed" action='/get_movie' method="POST">
+            <img id='search-icon' src="{{url_for('static',filename='assets/search_bar.png')}}">
+            <input id="emotion" name="emotion" placeholder="How do you feel??">
+            <button id='submit-button' type='submit'>Search</button>
+            </form>
+        </div>
+        </section>
+        
+        <!-- Results -->
+         <section id="results">
+            <div class="result-container">
+            <div id="result">
+                <div id="poster">
+                    <img src>
+                </div>
+                <div id="title">
+                    <h3>title</h3>
+                    <p>description</p>
+                </div>
+            </div>
+            </div>
+         </section>
+    </main>
+</body>
+</html>
