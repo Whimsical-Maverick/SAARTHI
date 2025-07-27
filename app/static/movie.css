@@ -61,11 +61,29 @@ button:hover {
 {
     display:flex;
     flex-direction:column;
+    
 }
 
 .result
 {
-
+    display:flex;
+    flex-direction: row;
+    align-items: center;
+    max-width: 750px;
+    background-color: white;
+    margin-top:10px;
+    margin-bottom:10px;
+    margin-left: 70px;
 }
 
+#movie_image
+{
+    height:300px;
+}
+
+#about
+{
+    display: flex;
+    flex-direction: column;
+}
 

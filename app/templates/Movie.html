@@ -15,28 +15,29 @@
         </section>
         <section id="search">
         <div id="searchbar">
-            <form id = "emotion-feed" action='/get_movie' method="POST">
+            <div id = "emotion-feed">
             <img id='search-icon' src="{{url_for('static',filename='assets/search_bar.png')}}">
             <input id="emotion" name="emotion" placeholder="How do you feel??">
-            <button id='submit-button' type='submit'>Search</button>
-            </form>
+            <button id='submit-button' type='button'>Search</button>
+            </div>
         </div>
         </section>
         
         <!-- Results -->
          <section id="results">
-            <div class="result-container">
-            <div id="result">
+            <div id="result-container" class="result-container">
+            <!-- <div id="result">
                 <div id="poster">
                     <img src>
                 </div>
                 <div id="title">
-                    <h3>title</h3>
-                    <p>description</p>
+                    <h3></h3>
+                    <p></p>
                 </div>
-            </div>
+            </div> -->
             </div>
          </section>
     </main>
+    <script src = "{{url_for('static',filename='movie.js')}}"></script>
 </body>
 </html>
