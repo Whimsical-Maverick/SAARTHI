@@ -6,7 +6,10 @@ SAARTHI is a modular Flask application combining facial-expression recognition, 
 
 ## Demo
 
-[Watch the SAARTHI screen recording](<Screen Recording - Sep 13, 2026.mp4>)
+<video controls width="800">
+  <source src="https://github.com/user-attachments/assets/facc7d7a-896e-41c3-8016-532f0a1cb19a" type="video/mp4">
+  Your browser does not support video playback.
+</video>
 
 ## Features
 
