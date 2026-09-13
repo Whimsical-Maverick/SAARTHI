@@ -4,6 +4,10 @@
 
 SAARTHI is a modular Flask application combining facial-expression recognition, mood-aware media discovery, and an empathetic AI chat experience.
 
+## Demo
+
+[Watch the SAARTHI screen recording](<Screen Recording - Sep 13, 2026.mp4>)
+
 ## Features
 
 - **Real-time emotion detection** with OpenCV, webcam input, and the bundled Ultralytics model.
@@ -201,4 +205,3 @@ Open <http://127.0.0.1:5000>.
 - Never log API keys or access tokens.
 - Webcam frames are processed by the local Flask process; review this behavior before deployment.
 - Emotion predictions are not medical diagnoses, and SAARTHI is not a replacement for professional care or emergency services.
-
