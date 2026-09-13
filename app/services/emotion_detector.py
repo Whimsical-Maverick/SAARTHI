@@ -11,9 +11,7 @@ label_dict = {
    6:"Sad",
    7:"Surprise",
 }
-current_emotion = ""
 def get_emotion():
-    global current_emotion
     video = cv.VideoCapture(0)
     model = YOLO(r'app\models\best.pt')
     while state.is_running:
@@ -24,7 +22,7 @@ def get_emotion():
             conf =float(box.conf[0])
             cls = int(box.cls[0])
             emotion = label_dict[cls]
-            current_emotion = emotion
+            state.current_emotion = emotion
         cv.rectangle(frame, (x1, y1), (x2, y2), (0, 255, 0), 2)
         cv.putText(frame, emotion, (x1, y1 - 10), cv.FONT_HERSHEY_SIMPLEX,0.8, (0, 255, 0), 2)
         # Encode the frame to send it to the frontend

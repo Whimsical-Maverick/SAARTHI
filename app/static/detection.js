@@ -1,34 +1,53 @@
-const videoFeed = document.getElementById('video-feed');
-const statusText=document.getElementById('status');
+const videoFeed = document.getElementById("video-feed");
+const statusText = document.getElementById("status");
+let emotionInterval = null;
+
+function setStatus(message) {
+    statusText.innerText = message;
+}
+
 function startLiveFeed() {
-    alert("FEED_STARTED...PLEASE KEEP LOOKING IN THE CAMERA")
-    fetch('/start_feed')
-    .then(response => response.json())
-    .then(() => {
-    videoFeed.src='/video_feed';
-    emotion_interval = setInterval(()=>{
-    fetch('/get_emotion')
-    .then(response => response.json())
-    .then(data => {
-        statusText.innerText = "Emotion" +" :" + data.emotion;
+    setStatus("Starting live feed...");
+
+    fetch("/start_feed")
+        .then((response) => response.json())
+        .then(() => {
+            videoFeed.src = "/video_feed";
+            setStatus("Feed is live. Stay in frame for a few seconds.");
+
+            if (emotionInterval) {
+                clearInterval(emotionInterval);
+            }
+
+            emotionInterval = setInterval(() => {
+                fetch("/get_emotion")
+                    .then((response) => response.json())
+                    .then((data) => {
+                        setStatus(`Detected emotion: ${data.emotion || "Reading..."}`);
+                    })
+                    .catch(() => {
+                        setStatus("Reading emotion...");
+                    });
+            }, 1000);
         })
-    .catch(err=>console.error(err));
-        },1000)
-    })
+        .catch(() => {
+            setStatus("Unable to start the feed right now.");
+        });
 }
 
 function stopLiveFeed() {
-    fetch('/stop_feed')
-    .then(response => response.json())
-    .then(() => {
-        videoFeed.src = '';
-        statusText.innerText = "Emotion Saved Successfully"
-        if (emotion_interval)
-        {
-            clearInterval(emotion_interval);
-            emotion_interval = null;
-        }
-    })
-        .catch(err=>console.error(err))
-        alert("FEED_STOPPED")
+    fetch("/stop_feed")
+        .then((response) => response.json())
+        .then(() => {
+            videoFeed.src = "";
+            setStatus("Emotion saved successfully.");
+
+            if (emotionInterval) {
+                clearInterval(emotionInterval);
+                emotionInterval = null;
+            }
+        })
+        .catch(() => {
+            setStatus("Unable to stop the feed right now.");
+        });
 }

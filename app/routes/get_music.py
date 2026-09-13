@@ -2,7 +2,7 @@ from flask import Blueprint,render_template
 import pandas as pd
 get_music_bp = Blueprint('get_music',__name__)
 import random
-from app.services.state import current_emotion
+import app.services.state as state
 from app.services.musicgetter import get_spotify_track_id
 @get_music_bp.route('/get_music')
 def music():
@@ -18,7 +18,7 @@ def music():
         "Surprise":"Powerful/Party"  # Surprise -> Energy
     }
 
-    cluster = mood_map.get(current_emotion,"Powerful/Party")
+    cluster = mood_map.get(state.current_emotion,"Powerful/Party")
     if cluster=="Powerful/Party":
         genre="Give this a shot — it kinda speaks to moments like this 😇"
     if cluster=="Melancholic/Chill":
@@ -32,7 +32,10 @@ def music():
     selected_index = random.randint(0, len(filtered_songs) - 1)
     selected_song = filtered_songs.iloc[selected_index]
     #getting the url 
-    song_id = get_spotify_track_id(selected_song['song_name'],selected_song['singer'])
+    try:
+        song_id = get_spotify_track_id(selected_song['song_name'],selected_song['singer'])
+    except RuntimeError as exc:
+        return render_template("Songs.html", statement=str(exc), song_name="", spotify_url="", spotify_id=""), 503
     if not song_id:
         return render_template("Songs.html", statement="Couldn't fetch a song, Mind Refreshing again", song_name="", spotify_url="", spotify_id="")
     else:

@@ -1,6 +1,6 @@
 # created by virtualenv automatically
 .env
-env/
+en/
 .cache
 emotion.npy
 __pycache__/

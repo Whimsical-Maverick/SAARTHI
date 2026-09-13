@@ -1,39 +1,72 @@
-document.addEventListener('DOMContentLoaded', function() {
-let div = document.querySelectorAll('.fact-item')
-let ans = document.querySelector('.fact-response')
-div.forEach(div => {
-div.addEventListener('click',()=>{
+document.addEventListener("DOMContentLoaded", () => {
+    const menuToggle = document.querySelector(".menu-toggle");
+    const navMenu = document.querySelector(".nav-menu");
+    const overlay = document.querySelector(".overlay");
+    const factItems = document.querySelectorAll(".fact-item");
+    const factResponse = document.querySelector(".fact-response");
+    const heroVideo = document.querySelector("#hero-video");
 
-    if(div.getAttribute('data-number')==="1")
-    {
-        ans.innerHTML="<b>It’s okay to feel off. You might not be able to explain what’s wrong — and that’s valid. Being here is already a step forward. 💙</b>"
+    // Browsers block audible autoplay. Start muted, then enable audio after
+    // the user's first interaction, which is an allowed playback gesture.
+    if (heroVideo) {
+        const startVideoAfterInteraction = () => {
+            heroVideo.muted = false;
+            heroVideo.volume = 1;
+            heroVideo.play().catch(() => {
+                // The visible controls remain available if autoplay is denied.
+            });
+            document.removeEventListener("pointerdown", startVideoAfterInteraction);
+            document.removeEventListener("keydown", startVideoAfterInteraction);
+        };
+
+        document.addEventListener("pointerdown", startVideoAfterInteraction, { once: true });
+        document.addEventListener("keydown", startVideoAfterInteraction, { once: true });
     }
 
-    if(div.getAttribute('data-number')==="2")
-    {
-        ans.innerHTML="<b>Putting a name to how you feel — sad, angry, overwhelmed — gives you power over it. 🎯Start small. Even “I don’t know” is a real answer.</b>"
+    const factContent = {
+        1: "It is okay to feel off. You may not have a clean explanation yet. Reaching for support is already a meaningful step.",
+        2: "Putting a name to a feeling can make it less shapeless. Even saying 'I do not know yet' is a real starting point.",
+        3: "You do not need to prove your pain before asking for help. Care is allowed before things feel extreme.",
+        4: "Stress can show up through headaches, fatigue, restlessness, or shutdown. Your body is part of the story too.",
+        5: "Not having the right words does not make the feeling less real. You can begin with a small clue and build from there.",
+        6: "Reading, checking in, and trying one next step all count. Progress often looks quieter than people expect."
+    };
+
+    const closeMenu = () => {
+        if (!menuToggle || !navMenu || !overlay) {
+            return;
+        }
+
+        menuToggle.classList.remove("active");
+        menuToggle.setAttribute("aria-expanded", "false");
+        navMenu.classList.remove("active");
+        overlay.classList.remove("active");
+        document.body.classList.remove("menu-open");
+    };
+
+    if (menuToggle && navMenu && overlay) {
+        menuToggle.addEventListener("click", () => {
+            const isOpen = navMenu.classList.toggle("active");
+            menuToggle.classList.toggle("active", isOpen);
+            menuToggle.setAttribute("aria-expanded", String(isOpen));
+            overlay.classList.toggle("active", isOpen);
+            document.body.classList.toggle("menu-open", isOpen);
+        });
+
+        overlay.addEventListener("click", closeMenu);
+        navMenu.querySelectorAll("a").forEach((link) => {
+            link.addEventListener("click", closeMenu);
+        });
     }
 
-    if(div.getAttribute('data-number')==="3")
-    {
-        ans.innerHTML="<b>You don’t have to “prove” your pain to ask for help. 🤲 You deserve care just as you are — no explanations needed.</b>"
-    }
+    factItems.forEach((item) => {
+        item.addEventListener("click", () => {
+            factItems.forEach((entry) => entry.classList.remove("selected"));
+            item.classList.add("selected");
 
-    if(div.getAttribute('data-number')==="4")
-    {
-        ans.innerHTML="<b>Stress and emotions often show up as headaches, fatigue, or restlessness. 🌀 Listen to your body. It’s telling a story too.</b>"
-    }
-
-    if(div.getAttribute('data-number')==="5")
-    {
-        ans.innerHTML="<b>Not sure what you’re feeling? That’s okay. 🤷 Even a quiet “something’s not right” matters. Start from there.</b>"
-    }
-
-    if(div.getAttribute('data-number')==="6")
-    {
-        ans.innerHTML="<b>Being here, reading this, exploring your feelings — it all counts. 🦋 Small steps are strong steps. Let’s keep going, together.</b>"
-    }
-
-})
-})
-})
+            if (factResponse) {
+                factResponse.textContent = factContent[item.dataset.number] || "Support starts with noticing what feels true right now.";
+            }
+        });
+    });
+});

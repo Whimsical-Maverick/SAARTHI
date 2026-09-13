@@ -5,6 +5,8 @@ pandas==2.3.0
 protobuf==6.31.1
 python-dotenv==1.1.1
 Requests==2.32.4
+emoji>=2.0.0
 sentence_transformers==4.1.0
 spotipy==2.24.0
+google-genai
 ultralytics==8.3.24

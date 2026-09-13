@@ -63,9 +63,10 @@ SaarthiClone/
 
    Create a `.env` file in the root directory:
 
-   `SPOTIFY_CLIENT_ID=your_spotify_client_id `
+   `SPOTIFY_CLIENT_ID=your_spotify_client_id`
    `SPOTIFY_CLIENT_SECRET=your_spotify_client_secret`
-   ` GEMINI_API_KEY=your_google_gemini_api_key`
+   `GEMINI_API_KEY=your_google_gemini_api_key`
+   `GEMINI_MODEL=gemini-3.5-flash`
    `TMDB_API_KEY=your_tmdb_api_key`
 6. **Run the Application**
 

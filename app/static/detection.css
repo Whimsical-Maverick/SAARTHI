@@ -1,70 +1,177 @@
 :root {
-    --primary-color: #5a8db8;
-    --primary-dark: #3a6d98;
-    --secondary-color: #a6c8e6;
-    --accent-color: #7fb069;
-    --accent-hover: #6a9c57;
-    --light-bg: #f7f9fc;
-    --dark-text: #2c3e50;
-    --medium-text: #546e7a;
-    --light-text: #ecf0f1;
-    --border-color: #e0e6ed;
-    --shadow-color: rgba(0, 0, 0, 0.1);
-    --card-bg: #ffffff;
-    --error-color: #e74c3c;
-    --success-color: #2ecc71;
-    --warning-color: #f39c12;
-    --info-color: #3498db;
-  }
+    --ink: #1d3342;
+    --muted: #617686;
+    --surface: rgba(255, 251, 247, 0.88);
+    --line: rgba(29, 51, 66, 0.1);
+    --accent: #1f7a8c;
+    --accent-soft: #d9ece6;
+    --shadow: 0 24px 60px rgba(40, 58, 70, 0.15);
+}
+
+* {
+    box-sizing: border-box;
+}
 
 body {
-    font-family: 'Poppins', sans-serif;
     margin: 0;
-    padding: 0;
-    background: rgba(247, 249, 252, 0.9);;
-    display: flex;
-    flex-direction: column;
+    min-height: 100vh;
+    font-family: "Manrope", sans-serif;
+    color: var(--ink);
+    background:
+        radial-gradient(circle at top left, rgba(31, 122, 140, 0.16), transparent 35%),
+        linear-gradient(135deg, #f6f0e7 0%, #fcfaf7 45%, #ece4d6 100%);
+    padding: 32px;
+}
+
+.detection-shell {
+    width: min(1180px, 100%);
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 0.88fr 1.12fr;
+    gap: 26px;
     align-items: center;
-    justify-content: center;
-    height: 100vh;
 }
 
-h1
-{
-    color:#05b4ff; 
+.detection-copy,
+.camera-panel {
+    background: var(--surface);
+    border-radius: 28px;
+    border: 1px solid rgba(255, 255, 255, 0.58);
+    box-shadow: var(--shadow);
 }
 
-h3
-{
-    color:rgb(9, 211, 9);
+.detection-copy {
+    padding: 36px;
 }
 
-#camera-feed {
-    border: 5px solid #ccc;
-    border-radius: 10px;
-    width: 640px;
-    height: 480px;
-    background: var(--primary-color);
-} 
+.eyebrow {
+    margin: 0 0 10px;
+    color: var(--accent);
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    font-size: 0.78rem;
+    font-weight: 800;
+}
+
+h1 {
+    margin: 0 0 14px;
+    font-size: clamp(2.1rem, 4vw, 3.6rem);
+    line-height: 1.05;
+}
+
+.detection-copy p {
+    margin: 0;
+    color: var(--muted);
+    line-height: 1.8;
+}
+
+.status-panel {
+    margin-top: 26px;
+    padding: 20px;
+    border-radius: 22px;
+    background: var(--accent-soft);
+}
+
+.status-label {
+    display: block;
+    font-size: 0.8rem;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    font-weight: 800;
+    color: var(--accent);
+}
+
+h3 {
+    margin: 8px 0 0;
+    font-size: 1.4rem;
+}
+
+#buttons-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+    margin-top: 26px;
+}
+
+button,
+.text-link {
+    min-height: 50px;
+    padding: 0 18px;
+    border-radius: 999px;
+    font: inherit;
+    font-weight: 800;
+}
 
 button {
-    margin-top: 20px;
-    padding: 10px 20px;
-    font-size: 16px;
-    background: #05b4ff;
-    background-clip:border-box;
-    color: white;
-    border: none;
-    border-radius: 15px;
+    border: 0;
     cursor: pointer;
 }
 
-button:hover {
-    background: #589ab6;
+.primary-action {
+    background: linear-gradient(135deg, var(--accent) 0%, #39a49b 100%);
+    color: #fff;
 }
 
-#buttons-container
-{
-   display:flex;
-   gap: 10px;
+.secondary-action {
+    background: rgba(255, 255, 255, 0.82);
+    color: var(--ink);
+    border: 1px solid var(--line);
+}
+
+.text-link {
+    display: inline-flex;
+    align-items: center;
+    text-decoration: none;
+    color: var(--ink);
+    border: 1px solid var(--line);
+    background: rgba(255, 255, 255, 0.6);
+}
+
+.camera-panel {
+    padding: 18px;
+}
+
+#camera-feed {
+    width: 100%;
+    min-height: 540px;
+    border-radius: 22px;
+    border: 1px solid var(--line);
+    background:
+        linear-gradient(135deg, rgba(31, 122, 140, 0.18), rgba(216, 236, 230, 0.85));
+    display: grid;
+    place-items: center;
+    overflow: hidden;
+}
+
+#video-feed {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+}
+
+@media (max-width: 900px) {
+    body {
+        padding: 18px;
+    }
+
+    .detection-shell {
+        grid-template-columns: 1fr;
+    }
+
+    #camera-feed {
+        min-height: 360px;
+    }
+}
+
+@media (max-width: 520px) {
+    #buttons-container {
+        flex-direction: column;
+    }
+
+    button,
+    .text-link {
+        width: 100%;
+        justify-content: center;
+    }
 }

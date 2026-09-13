@@ -3,23 +3,41 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Live Feed</title>
+    <title>SAARTHI Mood Check</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="{{ url_for('static', filename='detection.css') }}">
 </head>
 <body>
-    <h1>Live Feed Analysis</h1>
-    <h2>Welcome : {{name}}</h2>
-    <h3 id="status"></h3>
-    <div id="camera-feed">
-        <img id="video-feed" alt="" style="border: 2px solid #000; border-radius: 10px;">
-    </div>
-    
-    <div id="buttons-container">
-        <button onclick="startLiveFeed()">Start Feed</button>
-        <button onclick="stopLiveFeed()">Stop Feed</button>
-        <a href='/'><button>Back To Main</button></a>
-    </div>
+    <main class="detection-shell">
+        <section class="detection-copy">
+            <p class="eyebrow">Mood check</p>
+            <h1>Read the moment before choosing the next kind step.</h1>
+            <p>
+                Start the live feed, stay in frame for a few seconds, and SAARTHI will save the
+                latest emotion for the recommendation tools.
+            </p>
 
-    <script src="{{url_for('static',filename='detection.js')}}"></script>
+            <div class="status-panel">
+                <span class="status-label">Current status</span>
+                <h3 id="status">Feed is idle</h3>
+            </div>
+
+            <div id="buttons-container">
+                <button type="button" class="primary-action" onclick="startLiveFeed()">Start feed</button>
+                <button type="button" class="secondary-action" onclick="stopLiveFeed()">Stop feed</button>
+                <a href="{{ url_for('main.homepage') }}" class="text-link">Back to home</a>
+            </div>
+        </section>
+
+        <section class="camera-panel">
+            <div id="camera-feed">
+                <img id="video-feed" alt="Live mood check video feed">
+            </div>
+        </section>
+    </main>
+
+    <script src="{{ url_for('static', filename='detection.js') }}"></script>
 </body>
 </html>

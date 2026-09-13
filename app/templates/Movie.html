@@ -3,41 +3,49 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Movie Recommender</title>
-    <link rel="stylesheet" href="{{ url_for('static',filename='movie.css') }}">
+    <title>SAARTHI Movie Companion</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=Fraunces:opsz,wght@9..144,600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="{{ url_for('static', filename='movie.css') }}">
 </head>
 <body>
-	<main>
-        <section id="header-img">
-        <div id="img-container">
-            <img src="{{url_for('static',filename='assets/SentiSync.png')}}">
-        </div>
-        </section>
-        <section id="search">
-        <div id="searchbar">
-            <div id = "emotion-feed">
-            <img id='search-icon' src="{{url_for('static',filename='assets/search_bar.png')}}">
-            <input id="emotion" name="emotion" placeholder="How do you feel??">
-            <button id='submit-button' type='button'>Search</button>
-            </div>
-        </div>
-        </section>
-        
-        <!-- Results -->
-         <section id="results">
-            <div id="result-container" class="result-container">
-            <!-- <div id="result">
-                <div id="poster">
-                    <img src>
+    <main class="movie-page">
+        <section class="movie-hero">
+            <div class="hero-copy">
+                <p class="eyebrow">Mood-based movie discovery</p>
+                <h1>Describe the feeling. We will suggest something lighter to sit with it.</h1>
+                <p>
+                    Tell SAARTHI how you feel in your own words, and it will return uplifting movie picks.
+                </p>
+                <div class="hero-actions">
+                    <a href="{{ url_for('main.homepage') }}" class="ghost-link">Back to home</a>
+                    <a href="{{ url_for('talk.talk') }}" class="ghost-link">Open chat</a>
                 </div>
-                <div id="title">
-                    <h3></h3>
-                    <p></p>
-                </div>
-            </div> -->
             </div>
-         </section>
+            <div class="hero-mark">
+                <img src="{{ url_for('static', filename='assets/Gemini_Generated_Image_j5dluuj5dluuj5dl.png') }}" alt="SAARTHI">
+            </div>
+        </section>
+
+        <section id="search" class="search-panel">
+            <div id="searchbar">
+                <div id="emotion-feed">
+                    <label class="sr-only" for="emotion">Describe how you feel</label>
+                    <input id="emotion" name="emotion" placeholder="I feel restless and need something comforting" />
+                    <button id="submit-button" type="button">Find movies</button>
+                </div>
+            </div>
+        </section>
+
+        <section id="results" class="results-section">
+            <div class="results-header">
+                <h2>Recommendations</h2>
+                <p>Results will appear here after search.</p>
+            </div>
+            <div id="result-container" class="result-container"></div>
+        </section>
     </main>
-    <script src = "{{url_for('static',filename='movie.js')}}"></script>
+    <script src="{{ url_for('static', filename='movie.js') }}"></script>
 </body>
 </html>
