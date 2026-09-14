@@ -8,7 +8,7 @@ from app.services.musicgetter import get_spotify_track_id
 def music():
     clustered_music=pd.read_csv(r"app\static\clustered_music_2.csv")
     mood_map = {
-        "Angry":"Powerful/Party", # Angry → Energy
+        "Anger":"Powerful/Party", # Anger → Energy
         "Contempt":"Happy/Upbeat",   # Contempt -> Chill
         "Disgust":"Melancholic/Chill",     # Disgust → Chill
         "Fear":"Relaxing/Calm",     # Fear → Chill
